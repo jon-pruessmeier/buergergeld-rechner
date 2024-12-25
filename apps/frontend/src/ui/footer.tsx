@@ -7,7 +7,7 @@ export function Footer() {
   return (
     <footer>
       <RoundedBox>
-        <p>Wussten Sie schon?</p>
+        <p className="italic">Wussten Sie schon?</p>
         <p>{randomFact}</p>
         <p>
           Quelle:{" "}
