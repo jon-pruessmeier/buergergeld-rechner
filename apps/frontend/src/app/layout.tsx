@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="de">
       <body className="flex items-center justify-center">
-        <div className="grid grid-cols-1 gap-6 items-center justify-center w-full p-4 md:p-48">
+        <div className="grid grid-cols-1 gap-6 items-center justify-center w-full m-4 md:m-48 max-w-[650px]">
           <Header />
           <main>
             <RoundedBox>{children}</RoundedBox>

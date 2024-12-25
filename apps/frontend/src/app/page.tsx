@@ -1,9 +1,6 @@
 import { Fragment } from "react";
+import { BuergergeldForm } from "../form/buergergeld-form";
 
 export default function Home() {
-  return (
-    <Fragment>
-      <h2>Bitte geben Sie Ihre Daten wahrheitsgemäß ein:</h2>
-    </Fragment>
-  );
+  return <BuergergeldForm />;
 }
