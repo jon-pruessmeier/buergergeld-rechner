@@ -1,14 +1,12 @@
-import { Application, PersonalInfo } from "@repo/model";
+import { Application } from "@repo/model";
 import { useFormContext } from "react-hook-form";
 export function PersonalInfoInput({ next }: { next: () => void }) {
-  const {
-    register,
-    trigger,
-    formState: { errors },
-  } = useFormContext<Application>();
+  const { register, trigger } = useFormContext<Application>();
 
   const handleNext = async () => {
     const isValid = await trigger(["personalInfo"]);
+    console.log(isValid);
+    if (!isValid) return;
     next();
   };
 
