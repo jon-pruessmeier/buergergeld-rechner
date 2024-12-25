@@ -1,5 +1,5 @@
 {
-  "name": "Bürgergeldrechner",
+  "name": "buergergeldrechner",
   "private": true,
   "scripts": {
     "build": "turbo build",
