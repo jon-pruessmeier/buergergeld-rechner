@@ -4,6 +4,10 @@ import { Header } from "../ui/header";
 import { Footer } from "../ui/footer";
 import { RoundedBox } from "../ui/rounded-box";
 
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+config.autoAddCss = false;
+
 export const metadata: Metadata = {
   title: "Bürgergeldrecher",
   description: "Rechner by Jón Prüßmeier",
@@ -17,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="de">
       <body className="flex items-center justify-center">
-        <div className="grid grid-cols-1 gap-4 items-center justify-center w-full p-4 md:p-24">
+        <div className="grid grid-cols-1 gap-4 items-center justify-center w-full p-4 md:p-48">
           <Header />
           <main>
             <RoundedBox>{children}</RoundedBox>
