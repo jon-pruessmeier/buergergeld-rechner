@@ -84,6 +84,9 @@ importers:
 
   apps/server:
     dependencies:
+      '@repo/db':
+        specifier: workspace:*
+        version: link:../../packages/db
       '@repo/model':
         specifier: workspace:*
         version: link:../../packages/model
@@ -118,6 +121,9 @@ importers:
 
   packages/db:
     dependencies:
+      '@repo/model':
+        specifier: workspace:*
+        version: link:../model
       dotenv:
         specifier: 16.4.7
         version: 16.4.7
