@@ -7,18 +7,25 @@ import { Application, ApplicationSchema } from "@repo/model";
 import { useState } from "react";
 import { PersonalInfoInput } from "./personal-info-input";
 import { HousingInput } from "./housing-input";
+import { postApplication } from "./post-application";
 
 export function BuergergeldForm() {
   const [pageCount, setPageCount] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const methods = useForm<Application>({
     resolver: zodResolver(ApplicationSchema),
   });
 
-  const onSubmit = (data: Application) => {
+  const onSubmit = async (data: Application) => {
     console.log("Valid Data:", data);
     setLoading(true);
+    const answer = await postApplication(data);
+    if (answer) {
+      setSubmitted(true);
+      setLoading(false);
+    }
   };
 
   const next = () => setPageCount(1);
@@ -26,6 +33,8 @@ export function BuergergeldForm() {
 
   return loading ? (
     <p>LADEN</p>
+  ) : submitted ? (
+    <p>Submitted</p>
   ) : (
     <FormProvider {...methods}>
       <form

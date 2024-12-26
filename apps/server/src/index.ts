@@ -1,11 +1,16 @@
 import express from "express";
+import { ApplicationModule } from "./application/application.module.js";
+import cors from "cors";
 
 const app = express();
 const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
 
-// Routen
+app.use(cors());
+
+app.use("/api/application", ApplicationModule.routes);
+
 app.get("/", (req, res) => {
   res.send("Hello from Express Server!");
 });
