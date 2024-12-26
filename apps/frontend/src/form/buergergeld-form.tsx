@@ -7,6 +7,7 @@ import { Application, ApplicationSchema } from "@repo/model";
 import { useState } from "react";
 import { PersonalInfoInput } from "./personal-info-input";
 import { HousingInput } from "./housing-input";
+import { postApplication } from "./post-application";
 
 export function BuergergeldForm() {
   const [pageCount, setPageCount] = useState(0);
@@ -20,6 +21,11 @@ export function BuergergeldForm() {
   const onSubmit = async (data: Application) => {
     console.log("Valid Data:", data);
     setLoading(true);
+    const answer = await postApplication(data);
+    if (answer) {
+      setSubmitted(true);
+      setLoading(false);
+    }
   };
 
   const next = () => setPageCount(1);
