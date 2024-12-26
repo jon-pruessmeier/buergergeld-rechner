@@ -11,14 +11,14 @@
     "lint": "eslint 'src/**/*.{ts,tsx}'"
   },
   "dependencies": {
-    "@repo/model": "*",
+    "@repo/model": "workspace:*",
     "@types/cors": "^2.8.17",
     "cors": "^2.8.5",
     "express": "4.21.2"
   },
   "devDependencies": {
-    "@repo/eslint-config": "*",
-    "@repo/typescript-config": "*",
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
     "@types/express": "5.0.0",
     "@types/node": "22.10.2",
     "tsx": "4.19.2",
