@@ -1,9 +1,12 @@
-import { db } from "./db.js";
+import { useDb } from "./db.js";
 import { citizenTable } from "./schema.js";
 import { type Application } from "@repo/model";
 
 export const CitizenRepository = {
   create: async ({ personalInfo }: Application) => {
+    const { getDb } = await useDb();
+    const db = await getDb();
+
     try {
       // Insert-Daten erstellen
       const dataToInsert = {
