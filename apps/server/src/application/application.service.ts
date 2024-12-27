@@ -1,11 +1,12 @@
 import { type Application, ApplicationSchema } from "@repo/model";
+import { CitizenRepository } from "@repo/db";
 
-async function createApplication(application: Application) {
-  console.log(application);
+export async function createApplication(application: Application) {
   try {
     ApplicationSchema.parse(application);
     console.log("Application is valid.");
-    return true;
+    const result = await CitizenRepository.create(application);
+    console.table(result);
   } catch (e) {
     if (e instanceof Error) {
       throw new Error(e.message);

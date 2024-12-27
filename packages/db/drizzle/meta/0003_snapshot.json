@@ -1,0 +1,81 @@
+{
+  "id": "b517e2f7-7563-4e34-8507-7919082cfb3d",
+  "prevId": "ec5dba86-de03-4b6c-8646-47505a2cbb69",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.citizen": {
+      "name": "citizen",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "surname": {
+          "name": "surname",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "housingType": {
+          "name": "housingType",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "loanInterestMonth": {
+          "name": "loanInterestMonth",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "coldRentMonth": {
+          "name": "coldRentMonth",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "additionalCostsMonth": {
+          "name": "additionalCostsMonth",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "heatingCostsMonth": {
+          "name": "heatingCostsMonth",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

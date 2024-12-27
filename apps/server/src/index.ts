@@ -1,21 +1,33 @@
 import express from "express";
 import { ApplicationModule } from "./application/application.module.js";
 import cors from "cors";
+import { useDb } from "../../../../Bürgergeldrechner/packages/db/src/db.js";
 
-const app = express();
-const PORT = process.env.PORT || 8080;
+async function initServer() {
+  const { initDb } = await useDb();
 
-app.use(express.json());
+  console.log("Creating DB");
 
-app.use(cors());
+  await initDb();
 
-app.use("/api/application", ApplicationModule.routes);
+  console.log("Starting Server");
+  const app = express();
+  const PORT = process.env.PORT || 8080;
 
-app.get("/", (req, res) => {
-  res.send("Hello from Express Server!");
-});
+  app.use(express.json());
 
-// Server starten
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+  app.use(cors());
+
+  app.use("/api/application", ApplicationModule.routes);
+
+  app.get("/", (req, res) => {
+    res.send("Hello from Express Server!");
+  });
+
+  // Server starten
+  app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+  });
+}
+
+initServer();

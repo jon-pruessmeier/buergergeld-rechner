@@ -1,27 +1,32 @@
 {
-  "name": "server",
+  "name": "@repo/db",
   "version": "1.0.0",
-  "private": "true",
   "type": "module",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./dist/index.js"
+    }
+  },
   "scripts": {
-    "dev": "tsx watch src/index.ts",
-    "start": "tsx src/index.ts",
-    "type-check": "tsc --noEmit",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "dev": "tsc --watch",
     "build": "tsc",
     "lint": "eslint 'src/**/*.{ts,tsx}'"
   },
   "dependencies": {
     "@repo/model": "workspace:*",
-    "@repo/db": "workspace:*",
-    "@types/cors": "^2.8.17",
-    "cors": "^2.8.5",
-    "express": "4.21.2"
+    "dotenv": "16.4.7",
+    "drizzle-orm": "0.38.3",
+    "pg": "8.13.1"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "@types/express": "5.0.0",
     "@types/node": "22.10.2",
+    "@types/pg": "8.11.10",
+    "drizzle-kit": "0.30.1",
     "tsx": "4.19.2",
     "typescript": "5.7.2"
   }
