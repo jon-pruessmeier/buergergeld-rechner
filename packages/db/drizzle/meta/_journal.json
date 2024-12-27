@@ -15,6 +15,20 @@
       "when": 1735217026603,
       "tag": "0001_ordinary_talos",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1735315300126,
+      "tag": "0002_faithful_tarantula",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1735315340525,
+      "tag": "0003_fluffy_lockheed",
+      "breakpoints": true
     }
   ]
 }
