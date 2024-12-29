@@ -13,7 +13,7 @@ export function HousingInput({ back }: { back: () => void }) {
   useEffect(() => {
     if (housingType === "OWNERSHIP") setValue("housing.coldRentMonth", null);
     if (housingType === "RENT") setValue("housing.loanInterestMonth", null);
-  }, [housingType]);
+  }, [housingType, setValue]);
 
   return (
     <>

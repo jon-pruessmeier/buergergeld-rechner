@@ -19,7 +19,6 @@ export async function postApplication(data: Application) {
       );
     }
 
-    const responseData = await response.json();
     return true;
   } catch (error) {
     console.error("Error posting application:", error);

@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import { BuergergeldForm } from "../form/buergergeld-form";
 
 export default function Home() {
