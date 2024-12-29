@@ -8,7 +8,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint --max-warnings 0",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "docker:build": "docker build -f ./Dockerfile -t frontend-app ../..",
+    "docker:run": "docker run -d -p 3000:3000 frontend-app"
   },
   "dependencies": {
     "@repo/model": "workspace:*",

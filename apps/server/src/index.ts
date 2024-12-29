@@ -1,14 +1,21 @@
 import express from "express";
 import { ApplicationModule } from "./application/application.module.js";
 import cors from "cors";
-import { useDb } from "../../../../Bürgergeldrechner/packages/db/src/db.js";
+import { ServerDb, useDb } from "@repo/db";
+import dotenv from "dotenv";
 
 async function initServer() {
-  const { initDb } = await useDb();
+  dotenv.config();
+
+  const dbConnectionString = process.env.DATABASE_URL;
+  console.log(dbConnectionString);
+  const { initDb, getDb } = useDb(dbConnectionString);
 
   console.log("Creating DB");
 
   await initDb();
+
+  const db: ServerDb = await getDb();
 
   console.log("Starting Server");
   const app = express();
@@ -17,6 +24,11 @@ async function initServer() {
   app.use(express.json());
 
   app.use(cors());
+
+  app.use((req, res, next) => {
+    req.ctx = { db }; // Kontext im Request verfügbar machen
+    next();
+  });
 
   app.use("/api/application", ApplicationModule.routes);
 

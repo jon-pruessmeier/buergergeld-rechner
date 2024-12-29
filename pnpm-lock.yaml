@@ -96,6 +96,9 @@ importers:
       cors:
         specifier: ^2.8.5
         version: 2.8.5
+      dotenv:
+        specifier: ^16.4.7
+        version: 16.4.7
       express:
         specifier: 4.21.2
         version: 4.21.2
@@ -124,9 +127,6 @@ importers:
       '@repo/model':
         specifier: workspace:*
         version: link:../model
-      dotenv:
-        specifier: 16.4.7
-        version: 16.4.7
       drizzle-orm:
         specifier: 0.38.3
         version: 0.38.3(@types/pg@8.11.10)(@types/react@18.3.1)(pg@8.13.1)(react@19.0.0)

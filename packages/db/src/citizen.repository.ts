@@ -1,12 +1,10 @@
-import { useDb } from "./db.js";
 import { citizenTable } from "./schema.js";
 import { type Application } from "@repo/model";
 
-export const CitizenRepository = {
-  create: async ({ personalInfo, housing }: Application) => {
-    const { getDb } = await useDb();
-    const db = await getDb();
+import { ServerDb } from "./db.js";
 
+export const getCitizenRepository = (db: ServerDb) => ({
+  create: async ({ personalInfo, housing }: Application) => {
     console.table(housing);
 
     try {
@@ -34,4 +32,4 @@ export const CitizenRepository = {
       throw error;
     }
   },
-};
+});

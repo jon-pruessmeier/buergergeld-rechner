@@ -2,7 +2,9 @@ import { Application } from "@repo/model";
 
 export async function postApplication(data: Application) {
   try {
-    const response = await fetch("http://localhost:8080/api/application", {
+    const url = process.env.NEXT_PUBLIC_API_URL ?? "";
+
+    const response = await fetch(url.concat("/api/application"), {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -17,7 +19,6 @@ export async function postApplication(data: Application) {
       );
     }
 
-    const responseData = await response.json();
     return true;
   } catch (error) {
     console.error("Error posting application:", error);
