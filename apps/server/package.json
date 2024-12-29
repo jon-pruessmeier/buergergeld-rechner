@@ -8,8 +8,11 @@
     "start": "tsx src/index.ts",
     "type-check": "tsc --noEmit",
     "build": "tsc",
-    "lint": "eslint 'src/**/*.{ts,tsx}'"
+    "lint": "eslint 'src/**/*.{ts,tsx}'",
+    "docker:build": "docker build -f ./Dockerfile -t server-app ../..",
+    "docker:run": "docker run -d -p 8080:8080 server-app"
   },
+  "packageManager": "pnpm@9.15.1",
   "dependencies": {
     "@repo/db": "workspace:*",
     "@repo/model": "workspace:*",
