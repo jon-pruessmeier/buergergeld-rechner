@@ -11,10 +11,11 @@
     "lint": "eslint 'src/**/*.{ts,tsx}'"
   },
   "dependencies": {
-    "@repo/model": "workspace:*",
     "@repo/db": "workspace:*",
+    "@repo/model": "workspace:*",
     "@types/cors": "^2.8.17",
     "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
     "express": "4.21.2"
   },
   "devDependencies": {

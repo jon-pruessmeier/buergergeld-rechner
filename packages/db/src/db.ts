@@ -1,27 +1,26 @@
-import dotenv from "dotenv";
 import { drizzle } from "drizzle-orm/node-postgres";
 import pg from "pg";
-import { fileURLToPath } from "url";
 import path from "path";
 import { migrate } from "drizzle-orm/node-postgres/migrator";
+import { fileURLToPath } from "url";
+
+type UseDbReturnType = ReturnType<typeof useDb>;
+type PromisedServerDb = ReturnType<UseDbReturnType["getDb"]>;
+type ServerDb = Awaited<PromisedServerDb>;
 
 const { Pool } = pg;
 
-export async function useDb() {
+function useDb(connectionString?: string) {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
-  dotenv.config({
-    path: path.resolve(__dirname, "../../../.env"),
-  });
 
   async function initDb() {
     const pool = new Pool({
-      connectionString: process.env.DATABASE_URL,
+      connectionString,
     });
     const db = drizzle({ client: pool });
 
     try {
-      // Migration ausführen
       await migrate(db, {
         migrationsFolder: path.resolve(__dirname, "../drizzle/"),
       });
@@ -33,7 +32,7 @@ export async function useDb() {
 
   async function getDb() {
     const pool = new Pool({
-      connectionString: process.env.DATABASE_URL,
+      connectionString,
     });
     const db = drizzle({ client: pool });
     return db;
@@ -41,3 +40,5 @@ export async function useDb() {
 
   return { initDb, getDb };
 }
+
+export { useDb, type ServerDb };
