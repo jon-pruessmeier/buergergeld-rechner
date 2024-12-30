@@ -21,16 +21,26 @@ export function HousingInput({ back }: { back: () => void }) {
 
       <>
         <p>Wie wohnen Sie?</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-          <fieldset>
-            <input {...register("housing.type")} type="radio" value={"RENT"} />
-            <label>Miete</label>
-            <input
-              {...register("housing.type")}
-              type="radio"
-              value={"OWNERSHIP"}
-            />
-            <label>Eigentum</label>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <fieldset className="flex flex-row gap-4">
+            <div className="flex flex-row gap-1 items-center">
+              <input
+                {...register("housing.type")}
+                type="radio"
+                value={"RENT"}
+                className="appearance-none w-4 h-4 border border-gray-300 rounded-full checked:bg-primary focus:ring-2 focus:ring-primary focus:outline-none"
+              />
+              <label>Miete</label>
+            </div>
+            <div className="flex flex-row gap-1 items-center">
+              <input
+                {...register("housing.type")}
+                type="radio"
+                value={"OWNERSHIP"}
+                className="appearance-none w-4 h-4 border border-gray-300 rounded-full checked:bg-primary focus:ring-2 focus:ring-primary focus:outline-none"
+              />
+              <label className="">Eigentum</label>
+            </div>
           </fieldset>
         </div>
       </>
@@ -94,7 +104,10 @@ export function HousingInput({ back }: { back: () => void }) {
       ) : null}
 
       <div>
-        <button className={"next-button"} onClick={back}>
+        <button
+          className="next-button mr-4 bg-transparent text-gray-100 border-gray-100 border"
+          onClick={back}
+        >
           Zurück
         </button>
         <button
