@@ -1,9 +1,9 @@
 import "./globals.css";
 import type { Metadata } from "next";
 
-import { Header } from "../components/ui/header";
-import { RoundedBox } from "../components/ui/rounded-box";
-import { Footer } from "../components/ui/footer";
+import { Header } from "../ui/header";
+import { RoundedBox } from "../ui/rounded-box";
+import { Footer } from "../ui/footer";
 
 export const metadata: Metadata = {
   title: "Bürgergeldrecher",

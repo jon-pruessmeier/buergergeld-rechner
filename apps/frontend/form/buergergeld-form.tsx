@@ -7,9 +7,11 @@ import { Application, ApplicationSchema } from "@repo/model";
 import { useState } from "react";
 import { PersonalInfoInput } from "./personal-info-input";
 import { HousingInput } from "./housing-input";
-import { postApplication } from "./post-application";
+import { useApi } from "../hooks/use-api";
 
 export function BuergergeldForm() {
+  const { postApplication } = useApi();
+
   const [pageCount, setPageCount] = useState(0);
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
