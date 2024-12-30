@@ -61,7 +61,7 @@ export function BuergergeldForm() {
             console.log(errors);
           }
         )}
-        className="grid grid-cols-1 gap-2"
+        className="grid grid-cols-1 gap-4"
       >
         {pageCount === 0 ? <PersonalInfoInput next={next} /> : null}
         {pageCount === 1 ? <HousingInput back={back} /> : null}
