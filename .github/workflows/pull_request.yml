@@ -1,0 +1,43 @@
+name: CI - Pull Requests
+
+on: pull_request
+
+jobs:
+  ci:
+    name: Run CI for Pull Requests
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Check out the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2. Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      # 3. Install pnpm
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      #4. Install turbo
+      - name: Install turbo
+        run: npm install -g turbo
+
+      # 5. Install dependencies
+      - name: Install dependencies using pnpm
+        run: pnpm install --frozen-lockfile
+
+      # 6. Lint
+      - name: Lint
+        run: turbo lint
+
+      # 7. Check Types
+      - name: Type Check
+        run: turbo check-types
+
+      # 8. Run Build
+      - name: Build Project
+        run: turbo build
