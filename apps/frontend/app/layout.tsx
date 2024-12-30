@@ -1,12 +1,9 @@
-import type { Metadata } from "next";
 import "./globals.css";
-import { Header } from "../ui/header";
-import { Footer } from "../ui/footer";
-import { RoundedBox } from "../ui/rounded-box";
+import type { Metadata } from "next";
 
-import { config } from "@fortawesome/fontawesome-svg-core";
-import "@fortawesome/fontawesome-svg-core/styles.css";
-config.autoAddCss = false;
+import { Header } from "../components/ui/header";
+import { RoundedBox } from "../components/ui/rounded-box";
+import { Footer } from "../components/ui/footer";
 
 export const metadata: Metadata = {
   title: "Bürgergeldrecher",
