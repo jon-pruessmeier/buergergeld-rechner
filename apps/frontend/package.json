@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "start": "next start",
+    "start": "npx serve out",
     "lint": "next lint --max-warnings 0",
     "check-types": "tsc --noEmit",
     "docker:build": "docker build -f ./Dockerfile -t frontend-app ../..",
