@@ -1,84 +1,79 @@
-# Turborepo starter
+### **Citizen Benefit Calculator – Turbo Repo**
 
-This is an official starter Turborepo.
+This project is a **Turbo Repo** using **PNPM** that consists of multiple apps. The application can be started either with Docker or locally. Below you will find all the necessary information for setup and usage.
 
-## Using this example
+---
 
-Run the following command:
+### **Requirements**
 
-```sh
-npx create-turbo@latest
+- **Globally installed tools**:
+  - [PNPM](https://pnpm.io/installation)
+  - [Turbo](https://turbo.build)
+- **PostgreSQL Database**: The server component requires a configured PostgreSQL instance.
+
+---
+
+### **Quickstart with Docker**
+
+The easiest way to run the app is via Docker Compose:
+
+```bash
+docker-compose up --build
 ```
 
-## What's inside?
+- This will automatically start all necessary components and services (including .env configurations from compose-file)
 
-This Turborepo includes the following packages/apps:
+---
 
-### Apps and Packages
+### **Manual Setup**
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+If you prefer not to use Docker, you can also start the app locally.
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+#### **1. Setup the Repository**
 
-### Utilities
+Install the dependencies:
 
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
+```bash
+pnpm install
 ```
 
-### Develop
+#### **2. Start Apps**
 
-To develop all apps and packages, run the following command:
+- Individual apps:
 
-```
-cd my-turborepo
-pnpm dev
-```
+  ```bash
+  pnpm dev --filter <app-name>
+  ```
 
-### Remote Caching
+  Example:
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+  ```bash
+  pnpm dev --filter frontend
+  pnpm dev --filter server
+  ```
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+- All apps together:
+  ```bash
+  pnpm dev
+  ```
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+#### **3. Configure .env Files**
 
-```
-cd my-turborepo
-npx turbo login
-```
+To use the app, `.env` files need to be created. These files should follow the schema of the corresponding `.env.example` files.
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+- The `.env` files must be located in the same folder as their respective `.env.example` files.
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+#### **4. PostgreSQL Setup**
 
-```
-npx turbo link
-```
+The server app requires a working PostgreSQL database. The connection is configured via the `.env` file from the server.
 
-## Useful Links
+---
 
-Learn more about the power of Turborepo:
+### **Notes**
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+- All changes to the configuration or database must be properly reflected in the corresponding `.env` files.
+- Ensure that the database is accessible before starting the server.
+
+---
+
+### **Enjoy Testing!**
